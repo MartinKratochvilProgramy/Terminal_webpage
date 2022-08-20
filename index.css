@@ -1,0 +1,76 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    margin: 30px;
+    background: black;
+    color: rgb(64, 207, 114);
+}
+
+p {
+    margin-left: 0;
+    font-size: 20px;
+}
+
+textarea {
+    border: none;
+    overflow: hidden;
+    outline: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: white;
+    padding: 0;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    resize: none; /*remove the resize handle on the bottom right*/
+
+    margin: 2px;
+}
+
+.user-prompt {
+    color: rgb(64, 207, 114);
+    font-size: 20px;
+    margin: 0;
+    padding-top: 11px;
+}
+
+.text-field {
+    margin: 0;
+    padding-top: 0px;
+    font-size: 20px;
+    tab-size: 4;
+    color: white;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 9px 0 9px 0;
+
+}
+
+.prompt-text{
+    margin: 0 12px 0 0;
+}
+
+.cmd-text {
+    font-size: 20px;
+    color: white;
+    margin-left: 2px;
+}
+
+@media screen and (max-width: 850px) {
+    pre {
+        text-align: justify;
+        white-space: normal;
+    }
+    textarea{
+        max-width: 100px;
+    }
+}
+
