@@ -64,6 +64,7 @@ function displayInput(value) {
   // var para = document.createElement("p");
   // para.appendChild(document.createTextNode(value));
   // textField.appendChild(para);
+
   textField.innerHTML += value;
 }
 
@@ -74,6 +75,16 @@ function displayInvalidInput(value){
 
 function displayItem(item, cmd){
   // clearElement();
+  // // var pre = document.createElement("pre")
+  // // var adressText = document.createTextNode(adress)
+  // // pre.className = "user-prompt";
+  // // var cmdText = document.createTextNode(cmd); 
+  // // cmdText.className = "cmd-text";
+  // // cmdText.style.color = "white"
+  // // pre.appendChild(adressText);
+  // // pre.appendChild(cmdText);
+  // // textField.appendChild(pre);
+
   textField.innerHTML += "<p class=\"user-prompt\">" + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
   item.forEach(element => {
     displayInput(element);
