@@ -1,6 +1,6 @@
 const input = document.getElementById('input');
 const textField = document.getElementById('textField');
-const name = "user";
+const userName = "user";
 const adress = "@localhost:3000> ";
 
 
@@ -60,7 +60,7 @@ function command(cmd) {
 }
 // *************** VIEW ***************
 function displayInvalidInput(value){
-  value = "<p class=\"user-prompt\">" + name + adress + "<span class=\"cmd-text\">"  + "\'" + value +"\'" +' is not a valid command, type \'help\' to display list of commands ';
+  value = "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">"  + "\'" + value +"\'" +' is not a valid command, type \'help\' to display list of commands ';
   textField.innerHTML += value;
 }
 
@@ -71,7 +71,7 @@ function delay(time) {
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 async function displayItem(item, cmd){
-  textField.innerHTML += "<p class=\"user-prompt\">" + name + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
+  textField.innerHTML += "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
   
   for (let index = 0; index < item.length; ++index) {
     textField.innerHTML += item[index]
@@ -80,11 +80,11 @@ async function displayItem(item, cmd){
 }
 
 async function displayTrain(item, cmd) {
-  textField.innerHTML += "<p class=\"user-prompt\">" + name + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
+  textField.innerHTML += "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
 
   //add moving train into separate div
   const trainDiv = document.createElement('div');
-  trainDiv.className = 'train-div';
+  trainDiv.classuserName = 'train-div';
   for (let index = 0; index < item.length; ++index) {
     trainDiv.innerHTML += item[index]
   }
@@ -98,6 +98,7 @@ async function displayTrain(item, cmd) {
     textField.innerHTML += item[index]
   }
 }
+
 
 function clearTextField() {
   textField.innerHTML = '';
