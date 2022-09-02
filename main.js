@@ -3,8 +3,6 @@ const textField = document.getElementById('textField');
 const adress = "user@localhost:3000> ";
 
 
-
-
 // *************** MODEL ***************
 const help = [
   '<pre>\'help\'          You know what this does</pre>',
@@ -15,13 +13,13 @@ const help = [
 ];
 
 const train = [
-"<pre>CHOO CHOOO!</pre>",
-"<pre>  OO O o o o...      ______________________ _________________</pre>",
-"<pre>  O     ____          |                    | |               |</pre>",
-"<pre> ][_n_i_| (   ooo___  |                    | |               |</pre>",
-"<pre> ][_n_i_| (   ooo___  |                    | |               |</pre>",
-"<pre>(__________|_[______]_|____________________|_|_______________|</pre>",
-"<pre>  0--0--0      0  0      0       0     0        0        0</pre>"
+  "<pre id='pre-train' class='train'>CHOO CHOOO!</pre>",
+  "<pre id='pre-train' class='train'>  OO O o o o...      ______________________ _________________</pre>",
+  "<pre id='pre-train' class='train'>  O     ____          |                    | |               |</pre>",
+  "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |</pre>",
+  "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |</pre>",
+  "<pre id='pre-train' class='train'>(__________|_[______]_|____________________|_|_______________|</pre>",
+  "<pre id='pre-train' class='train'>  0--0--0      0  0      0       0     0        0        0</pre>",
 ]
 
 const projects = [
@@ -47,11 +45,11 @@ function command(cmd) {
   } else if (cmd === 'who'){
     displayItem(who, cmd)
   } else if (cmd === 'train'){
-    displayItem(train, cmd);
+    displayTrain(train, cmd);
   } else if (cmd === 'projects'){
     displayItem(projects, cmd)
   } else if (cmd === 'clear') {
-    clearElement();
+    clearTextField();
   } else if (cmd === ''){
     displayItem('', cmd)
   } else {
@@ -60,38 +58,52 @@ function command(cmd) {
   input.value = '';
 }
 // *************** VIEW ***************
-function displayInput(value) {
-  // var para = document.createElement("p");
-  // para.appendChild(document.createTextNode(value));
-  // textField.appendChild(para);
-
+function displayInvalidInput(value){
+  value = "<p class=\"user-prompt\">" + adress + "<span class=\"cmd-text\">"  + "\'" + value +"\'" +' is not a valid command, type \'help\' to display list of commands ';
   textField.innerHTML += value;
 }
 
-function displayInvalidInput(value){
-  value = "<p class=\"user-prompt\">" + adress + "<span class=\"cmd-text\">"  + "\'" + value +"\'" +' is not a valid command, type \'help\' to display list of commands ';
-  displayInput(value);
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
 }
 
-function displayItem(item, cmd){
-  // clearElement();
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+async function displayItem(item, cmd){
+  // clearTextField();
   // // var pre = document.createElement("pre")
   // // var adressText = document.createTextNode(adress)
-  // // pre.className = "user-prompt";
+  // // pre.class = "user-prompt";
   // // var cmdText = document.createTextNode(cmd); 
-  // // cmdText.className = "cmd-text";
+  // // cmdText.class = "cmd-text";
   // // cmdText.style.color = "white"
   // // pre.appendChild(adressText);
   // // pre.appendChild(cmdText);
   // // textField.appendChild(pre);
 
   textField.innerHTML += "<p class=\"user-prompt\">" + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
-  item.forEach(element => {
-    displayInput(element);
-  });
+  
+  for (let index = 0; index < item.length; ++index) {
+    textField.innerHTML += item[index]
+    await sleep(50);
+  }
 }
 
-function clearElement() {
+async function displayTrain(item, cmd) {
+  textField.innerHTML += "<p class=\"user-prompt\">" + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
+  const stylesheet = document.styleSheets[0]
+  stylesheet.insertRule(".train { animation: 3s ease-out 0s 1 slideInFromRight;}", 0);
+
+  for (let index = 0; index < item.length; ++index) {
+    textField.innerHTML += item[index]
+    console.log(item[index]);
+  }
+  await sleep(3000);
+  console.log("no anim")
+  stylesheet.insertRule(".train { animation: none !important;}", 0);
+  
+}
+
+function clearTextField() {
   textField.innerHTML = '';
 }
 
