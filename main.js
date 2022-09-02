@@ -30,7 +30,7 @@ const who = [
   '<pre>I am a hobby programmer with a degree in mechanical engineering!</pre>'
 ]
 
-// *************** CONTROLER ***************
+// *************** CONTROLLER ***************
 var inputHandler = function (event) {
   if (event.key === 'Enter') {
     command(input.value);
@@ -63,23 +63,13 @@ function displayInvalidInput(value){
   textField.innerHTML += value;
 }
 
+//sleep function
 function delay(time) {
   return new Promise(resolve => setTimeout(resolve, time));
 }
-
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
-async function displayItem(item, cmd){
-  // clearTextField();
-  // // var pre = document.createElement("pre")
-  // // var adressText = document.createTextNode(adress)
-  // // pre.class = "user-prompt";
-  // // var cmdText = document.createTextNode(cmd); 
-  // // cmdText.class = "cmd-text";
-  // // cmdText.style.color = "white"
-  // // pre.appendChild(adressText);
-  // // pre.appendChild(cmdText);
-  // // textField.appendChild(pre);
 
+async function displayItem(item, cmd){
   textField.innerHTML += "<p class=\"user-prompt\">" + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
   
   for (let index = 0; index < item.length; ++index) {
@@ -90,17 +80,22 @@ async function displayItem(item, cmd){
 
 async function displayTrain(item, cmd) {
   textField.innerHTML += "<p class=\"user-prompt\">" + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
-  const stylesheet = document.styleSheets[0]
-  stylesheet.insertRule(".train { animation: 3s ease-out 0s 1 slideInFromRight;}", 0);
 
+  //add moving train into separate div
+  const trainDiv = document.createElement('div');
+  trainDiv.className = 'train-div';
+  for (let index = 0; index < item.length; ++index) {
+    trainDiv.innerHTML += item[index]
+  }
+  textField.appendChild(trainDiv);
+
+  await sleep(3000);
+
+  //replace moving train with stationary train
+  trainDiv.remove()
   for (let index = 0; index < item.length; ++index) {
     textField.innerHTML += item[index]
-    console.log(item[index]);
   }
-  await sleep(3000);
-  console.log("no anim")
-  stylesheet.insertRule(".train { animation: none !important;}", 0);
-  
 }
 
 function clearTextField() {
