@@ -1,6 +1,6 @@
 const input = document.getElementById('input');
 const textField = document.getElementById('textField');
-let userName = "user";
+let userName;
 const adress = "@localhost:3000> ";
 
 
@@ -51,7 +51,10 @@ function command(cmd) {
   } else if (cmd === 'projects'){
     displayItem(projects, cmd)
   } else if (cmd.replace(/ .*/,'') === 'name') {
-    console.log('changing name')
+    if (cmd.split(" ").length != 2) {
+      displayInvalidInput(cmd);
+      return;
+    }
     changeUserName(cmd);
   } else if (cmd === 'clear') {
     clearTextField();
@@ -109,18 +112,25 @@ function displayInvalidInput(value){
 }
 
 function changeUserName(cmd) {
-  var inputWords = cmd.split(" ");
-  if (inputWords.length != 2) {
-    displayInvalidInput(cmd);
-    return;
-  }
-  userName = inputWords[1];
+  userName = cmd.split(" ")[1]
   clearTextField();
   document.getElementById('prompt-text').innerText = userName + '@localhost:3000>'
+  localStorage.setItem('userName', userName);
 }
 
 (function () {
   input.addEventListener('keypress', inputHandler, false);
+  
+  // check localStorage for name
+  if (localStorage.getItem('userName')) {
+    userName = localStorage.getItem('userName');
+    console.log('user exists: ' + userName);
+  } else {
+    console.log('user does not exist');
+  }
+  
+  // init prompt text
+  document.getElementById('prompt-text').innerText = userName + '@localhost:3000>'
 })();
 
 
