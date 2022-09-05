@@ -20,7 +20,7 @@ const train = [
   "<pre id='pre-train' class='train'>  O     ____          |                    | |               |</pre>",
   "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |</pre>",
   "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |</pre>",
-  "<pre id='pre-train' class='train'>(__________|_[______]_|____________________|_|_______________|</pre>",
+  "<pre id='pre-train' class='train'>(_ _________|_[______]_|____________________|_|_______________|</pre>",
   "<pre id='pre-train' class='train'>  0--0--0      0  0      0       0     0        0        0</pre>",
 ]
 
