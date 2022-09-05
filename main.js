@@ -1,16 +1,17 @@
 const input = document.getElementById('input');
 const textField = document.getElementById('textField');
-const userName = "user";
+let userName = "user";
 const adress = "@localhost:3000> ";
 
 
 // *************** MODEL ***************
 const help = [
-  '<pre>\'help\'          You know what this does</pre>',
-  '<pre>\'who\'           Who am I?</pre>',
-  '<pre>\'train\'         Show me the train</pre>',
-  '<pre>\'projects\'      Show projects </pre>',
-  '<pre>\'clear\'         Clear command prompt</pre>',
+  '<pre>\'help\'              You know what this does</pre>',
+  '<pre>\'who\'               Who am I?</pre>',
+  '<pre>\'train\'             Show me the train</pre>',
+  '<pre>\'projects\'          Show projects </pre>',
+  '<pre>\'clear\'             Clear command prompt</pre>',
+  '<pre>\'name user-name\'    Change user name</pre>',
 ];
 
 const train = [
@@ -49,6 +50,9 @@ function command(cmd) {
     displayTrain(train, cmd);
   } else if (cmd === 'projects'){
     displayItem(projects, cmd)
+  } else if (cmd.replace(/ .*/,'') === 'name') {
+    console.log('changing name')
+    changeUserName(cmd);
   } else if (cmd === 'clear') {
     clearTextField();
   } else if (cmd === ''){
@@ -58,11 +62,6 @@ function command(cmd) {
   }
   input.value = '';
 }
-// *************** VIEW ***************
-function displayInvalidInput(value){
-  value = "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">"  + "\'" + value +"\'" +' is not a valid command, type \'help\' to display list of commands ';
-  textField.innerHTML += value;
-}
 
 //sleep function
 function delay(time) {
@@ -70,12 +69,13 @@ function delay(time) {
 }
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
+// *************** VIEW ***************
 async function displayItem(item, cmd){
   textField.innerHTML += "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
   
   for (let index = 0; index < item.length; ++index) {
     textField.innerHTML += item[index]
-    await sleep(50);
+    await sleep(25);
   }
 }
 
@@ -84,13 +84,13 @@ async function displayTrain(item, cmd) {
 
   //add moving train into separate div
   const trainDiv = document.createElement('div');
-  trainDiv.classuserName = 'train-div';
+  trainDiv.className  = 'train-div';
   for (let index = 0; index < item.length; ++index) {
     trainDiv.innerHTML += item[index]
   }
   textField.appendChild(trainDiv);
 
-  await sleep(2000);
+  await sleep(1500);
 
   //replace moving train with stationary train
   trainDiv.remove()
@@ -99,9 +99,24 @@ async function displayTrain(item, cmd) {
   }
 }
 
-
 function clearTextField() {
   textField.innerHTML = '';
+}
+
+function displayInvalidInput(value){
+  value = "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">" + value +' is not a valid command, type \'help\' to display list of commands ';
+  textField.innerHTML += value;
+}
+
+function changeUserName(cmd) {
+  var inputWords = cmd.split(" ");
+  if (inputWords.length != 2) {
+    displayInvalidInput(cmd);
+    return;
+  }
+  userName = inputWords[1];
+  clearTextField();
+  document.getElementById('prompt-text').innerText = userName + '@localhost:3000>'
 }
 
 (function () {
