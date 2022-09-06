@@ -6,4 +6,4 @@ Webpage works as a simple terminal. Type 'help' to list available commands.
 
 # How to run
 
-Open the 'index.html' in a web browser (preferably Firefox I didn't test it anywhere else). 
+Open the 'index.html' in a web browser (preferably Firefox or Chrome I didn't test it anywhere else). 
