@@ -93,7 +93,7 @@ async function displayTrain(item, cmd) {
   }
   textField.appendChild(trainDiv);
 
-  await sleep(1500);
+  await sleep(1000);
 
   //replace moving train with stationary train
   trainDiv.remove()
