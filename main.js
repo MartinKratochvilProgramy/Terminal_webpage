@@ -124,9 +124,8 @@ function changeUserName(cmd) {
   // check localStorage for name
   if (localStorage.getItem('userName')) {
     userName = localStorage.getItem('userName');
-    console.log('user exists: ' + userName);
   } else {
-    console.log('user does not exist');
+    userName = 'user';
   }
   
   // init prompt text
