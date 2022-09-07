@@ -1,7 +1,7 @@
 const input = document.getElementById('input');
 const textField = document.getElementById('textField');
 let userName;
-const adress = "@localhost:5000> ";
+const adress = "@localhost:3000> ";
 
 
 // *************** MODEL ***************
