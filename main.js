@@ -15,13 +15,13 @@ const help = [
 ];
 
 const train = [
-  "<pre id='pre-train' class='train'>CHOO CHOOO!",
-  "<pre id='pre-train' class='train'>  OO O o o o...      ______________________ _________________",
-  "<pre id='pre-train' class='train'>  O     ____          |                    | |               |",
-  "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |",
-  "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |",
-  "<pre id='pre-train' class='train'>(_ _________|_[______]_|____________________|_|_______________|",
-  "<pre id='pre-train' class='train'>  0--0--0      0  0      0       0     0        0        0",
+  "CHOO CHOOO!",
+  "  OO O o o o...      ______________________ _________________",
+  "  O     ____          |                    | |               |",
+  " ][_n_i_| (   ooo___  |                    | |               |",
+  " ][_n_i_| (   ooo___  |                    | |               |",
+  "(_ _________|_[______]_|____________________|_|_______________|",
+  "  0--0--0      0  0      0       0     0        0        0",
 ]
 
 const projects = [
@@ -111,7 +111,11 @@ async function displayTrain(item, cmd) {
   const trainDiv = document.createElement('div');
   trainDiv.className  = 'train-div';
   for (let i = 0; i < item.length; ++i) {
-    trainDiv.innerHTML += item[i]
+    const preElement = document.createElement('pre');
+    preElement.id = 'pre-train';
+    preElement.className = 'train';
+    preElement.textContent = item[i];
+    trainDiv.appendChild(preElement);
   }
   textField.appendChild(trainDiv);
 
@@ -119,8 +123,10 @@ async function displayTrain(item, cmd) {
 
   //replace moving train with stationary train
   trainDiv.remove()
-  for (let index = 0; index < item.length; ++index) {
-    textField.innerHTML += item[index]
+  for (let i = 0; i < item.length; ++i) {
+    const preElement = document.createElement('pre');
+    preElement.textContent = item[i];
+    textField.appendChild(preElement);
   }
 }
 
