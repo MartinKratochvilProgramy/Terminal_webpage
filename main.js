@@ -73,23 +73,44 @@ function delay(time) {
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 // *************** VIEW ***************
+function displayPrevCmd(cmd) {
+  const prevCmdContainer = document.createElement('div');
+  prevCmdContainer.classList = "cmd-text-container";
+
+  const prevCmd = document.createElement('p');
+  prevCmd.className = "user-prompt";
+  const cmdSpan = document.createElement('p');
+  cmdSpan.className = "cmd-text";
+
+  prevCmd.textContent = userName + adress;
+  cmdSpan.textContent = cmd
+  prevCmdContainer.appendChild(prevCmd);
+  prevCmdContainer.appendChild(cmdSpan);
+
+  textField.appendChild(prevCmdContainer);
+}
+
 async function displayItem(item, cmd){
-  textField.innerHTML += "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
+  // iterates through item array and displays individual vals
+  displayPrevCmd(cmd);
   
-  for (let index = 0; index < item.length; ++index) {
-    textField.innerHTML += item[index]
+  for (let i = 0; i < item.length; ++i) {
+    const preElement = document.createElement('pre');
+    preElement.textContent = item[i];
+    textField.appendChild(preElement);
     await sleep(25);
   }
 }
 
 async function displayTrain(item, cmd) {
-  textField.innerHTML += "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">" + cmd + "</span></p>";
+  // same as displayItem but to ensure train stops moving
+  displayPrevCmd(cmd);
 
   //add moving train into separate div
   const trainDiv = document.createElement('div');
   trainDiv.className  = 'train-div';
-  for (let index = 0; index < item.length; ++index) {
-    trainDiv.innerHTML += item[index]
+  for (let i = 0; i < item.length; ++i) {
+    trainDiv.innerHTML += item[i]
   }
   textField.appendChild(trainDiv);
 
@@ -106,9 +127,25 @@ function clearTextField() {
   textField.innerHTML = '';
 }
 
-function displayInvalidInput(value){
-  value = "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">" + value +' is not a valid command, type \'help\' to display list of commands ';
-  textField.innerHTML += value;
+function displayInvalidInput(cmd){
+  console.log(cmd);
+  const prevCmdContainer = document.createElement('div');
+  prevCmdContainer.classList = "cmd-text-container";
+
+  const prevCmd = document.createElement('p');
+  prevCmd.className = "user-prompt";
+  const cmdSpan = document.createElement('p');
+  cmdSpan.className = "cmd-text";
+
+  prevCmd.textContent = userName + adress;
+  cmdSpan.textContent = cmd +' is not a valid command, type \'help\' to display list of commands';
+  prevCmdContainer.appendChild(prevCmd);
+  prevCmdContainer.appendChild(cmdSpan);
+
+  textField.appendChild(prevCmdContainer);
+
+  //value = "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">" + value +' is not a valid command, type \'help\' to display list of commands ';
+  //textField.innerHTML += value;
 }
 
 function changeUserName(cmd) {
