@@ -24,9 +24,7 @@ const train = [
   '  0--0--0      0  0      0       0     0        0        0',
 ]
 
-const projects = [
-  'You can check out my projects at: <a href="https://github.com/MartinKratochvilProgramy" target="_blank" class="cmd-text">github.com/MartinKratochvilProgramy</a>'
-]
+const projects = '<div style="margin: 20px 0 20px 0;">You can check out my projects at: <a href="https://github.com/MartinKratochvilProgramy" target="_blank" class="cmd-text">github.com/MartinKratochvilProgramy</a></div>';
 
 const who = [
   'I am a hobby programmer with a degree in mechanical engineering!'
@@ -49,7 +47,8 @@ function command(cmd) {
   } else if (cmd === 'train'){
     displayTrain(train, cmd);
   } else if (cmd === 'projects'){
-    displayItem(projects, cmd)
+    displayPrevCmd(cmd);
+    textField.innerHTML += projects;
   } else if (cmd.replace(/ .*/,'') === 'name') {
     if (cmd.split(' ').length != 2) {
       displayInvalidInput(cmd);
