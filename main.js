@@ -74,6 +74,7 @@ const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 // *************** VIEW ***************
 function displayPrevCmd(cmd) {
+  // after input by user leave last cmd displayed
   const prevCmdContainer = document.createElement('div');
   prevCmdContainer.classList = "cmd-text-container";
 
@@ -128,6 +129,7 @@ function clearTextField() {
 }
 
 function displayInvalidInput(cmd){
+  // display error in command line if input not in available inputs
   console.log(cmd);
   const prevCmdContainer = document.createElement('div');
   prevCmdContainer.classList = "cmd-text-container";
@@ -143,12 +145,10 @@ function displayInvalidInput(cmd){
   prevCmdContainer.appendChild(cmdSpan);
 
   textField.appendChild(prevCmdContainer);
-
-  //value = "<p class=\"user-prompt\">" + userName + adress + "<span class=\"cmd-text\">" + value +' is not a valid command, type \'help\' to display list of commands ';
-  //textField.innerHTML += value;
 }
 
 function changeUserName(cmd) {
+  // change name before @localhost and saves it in localstorage
   userName = cmd.split(" ")[1]
   clearTextField();
   document.getElementById('prompt-text').innerText = userName + '@localhost:3000>'
