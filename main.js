@@ -6,30 +6,30 @@ const adress = "@localhost:3000> ";
 
 // *************** MODEL ***************
 const help = [
-  '<pre>\'help\'              You know what this does</pre>',
-  '<pre>\'who\'               Who am I?</pre>',
-  '<pre>\'train\'             Show me the train</pre>',
-  '<pre>\'projects\'          Show projects </pre>',
-  '<pre>\'clear\'             Clear command prompt</pre>',
-  '<pre>\'name user-name\'    Change user name</pre>',
+  '\'help\'              You know what this does',
+  '\'who\'               Who am I?',
+  '\'train\'             Show me the train',
+  '\'projects\'          Show projects ',
+  '\'clear\'             Clear command prompt',
+  '\'name user-name\'    Change user name',
 ];
 
 const train = [
-  "<pre id='pre-train' class='train'>CHOO CHOOO!</pre>",
-  "<pre id='pre-train' class='train'>  OO O o o o...      ______________________ _________________</pre>",
-  "<pre id='pre-train' class='train'>  O     ____          |                    | |               |</pre>",
-  "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |</pre>",
-  "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |</pre>",
-  "<pre id='pre-train' class='train'>(_ _________|_[______]_|____________________|_|_______________|</pre>",
-  "<pre id='pre-train' class='train'>  0--0--0      0  0      0       0     0        0        0</pre>",
+  "<pre id='pre-train' class='train'>CHOO CHOOO!",
+  "<pre id='pre-train' class='train'>  OO O o o o...      ______________________ _________________",
+  "<pre id='pre-train' class='train'>  O     ____          |                    | |               |",
+  "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |",
+  "<pre id='pre-train' class='train'> ][_n_i_| (   ooo___  |                    | |               |",
+  "<pre id='pre-train' class='train'>(_ _________|_[______]_|____________________|_|_______________|",
+  "<pre id='pre-train' class='train'>  0--0--0      0  0      0       0     0        0        0",
 ]
 
 const projects = [
-  '<pre>You can check out my projects at: <a href="https://github.com/MartinKratochvilProgramy" target="_blank" class="cmd-text">github.com/MartinKratochvilProgramy</a></pre>'
+  'You can check out my projects at: <a href="https://github.com/MartinKratochvilProgramy" target="_blank" class="cmd-text">github.com/MartinKratochvilProgramy</a>'
 ]
 
 const who = [
-  '<pre>I am a hobby programmer with a degree in mechanical engineering!</pre>'
+  'I am a hobby programmer with a degree in mechanical engineering!'
 ]
 
 // *************** CONTROLLER ***************
