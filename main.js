@@ -104,7 +104,7 @@ async function displayItem(item, cmd){
 }
 
 async function displayTrain(item, cmd) {
-  // same as displayItem but to ensure train stops moving
+  // same as displayItem but to ensure the train is moving
   displayPrevCmd(cmd);
 
   //add moving train into separate div
