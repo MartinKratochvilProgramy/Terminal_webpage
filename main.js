@@ -1,7 +1,7 @@
 const input = document.getElementById('input');
 const textField = document.getElementById('textField');
 let userName;
-const adress = "@localhost:3000> ";
+const adress = '@localhost:3000> ';
 
 
 // *************** MODEL ***************
@@ -15,13 +15,13 @@ const help = [
 ];
 
 const train = [
-  "CHOO CHOOO!",
-  "  OO O o o o...      ______________________ _________________",
-  "  O     ____          |                    | |               |",
-  " ][_n_i_| (   ooo___  |                    | |               |",
-  " ][_n_i_| (   ooo___  |                    | |               |",
-  "(_ _________|_[______]_|____________________|_|_______________|",
-  "  0--0--0      0  0      0       0     0        0        0",
+  'CHOO CHOOO!',
+  '  OO O o o o...      ______________________ _________________',
+  '  O     ____          |                    | |               |',
+  ' ][_n_i_| (   ooo___  |                    | |               |',
+  ' ][_n_i_| (   ooo___  |                    | |               |',
+  '(_ _________|_[______]_|____________________|_|_______________|',
+  '  0--0--0      0  0      0       0     0        0        0',
 ]
 
 const projects = [
@@ -51,7 +51,7 @@ function command(cmd) {
   } else if (cmd === 'projects'){
     displayItem(projects, cmd)
   } else if (cmd.replace(/ .*/,'') === 'name') {
-    if (cmd.split(" ").length != 2) {
+    if (cmd.split(' ').length != 2) {
       displayInvalidInput(cmd);
       return;
     }
@@ -76,12 +76,12 @@ const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 function displayPrevCmd(cmd) {
   // after input by user leave last cmd displayed
   const prevCmdContainer = document.createElement('div');
-  prevCmdContainer.classList = "cmd-text-container";
+  prevCmdContainer.classList = 'cmd-text-container';
 
   const prevCmd = document.createElement('p');
-  prevCmd.className = "user-prompt";
+  prevCmd.className = 'user-prompt';
   const cmdSpan = document.createElement('p');
-  cmdSpan.className = "cmd-text";
+  cmdSpan.className = 'cmd-text';
 
   prevCmd.textContent = userName + adress;
   cmdSpan.textContent = cmd
@@ -140,12 +140,12 @@ function displayInvalidInput(cmd){
   // display error in command line if input not in available inputs
   console.log(cmd);
   const prevCmdContainer = document.createElement('div');
-  prevCmdContainer.classList = "cmd-text-container";
+  prevCmdContainer.classList = 'cmd-text-container';
 
   const prevCmd = document.createElement('p');
-  prevCmd.className = "user-prompt";
+  prevCmd.className = 'user-prompt';
   const cmdSpan = document.createElement('p');
-  cmdSpan.className = "cmd-text";
+  cmdSpan.className = 'cmd-text';
 
   prevCmd.textContent = userName + adress;
   cmdSpan.textContent = cmd +' is not a valid command, type \'help\' to display list of commands';
@@ -158,7 +158,7 @@ function displayInvalidInput(cmd){
 
 function changeUserName(cmd) {
   // change name before @localhost and saves it in localstorage
-  userName = cmd.split(" ")[1]
+  userName = cmd.split(' ')[1]
   clearTextField();
   document.getElementById('prompt-text').innerText = userName + '@localhost:3000>'
   localStorage.setItem('userName', userName);
