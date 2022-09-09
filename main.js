@@ -99,6 +99,7 @@ async function displayItem(item, cmd){
     const preElement = document.createElement('pre');
     preElement.textContent = item[i];
     textField.appendChild(preElement);
+    window.scrollTo(0, document.body.scrollHeight);
     await sleep(25);
   }
 }
@@ -128,6 +129,7 @@ async function displayTrain(item, cmd) {
     preElement.textContent = item[i];
     textField.appendChild(preElement);
   }
+  window.scrollTo(0, document.body.scrollHeight);
 }
 
 function clearTextField() {
@@ -151,6 +153,7 @@ function displayInvalidInput(cmd){
   prevCmdContainer.appendChild(cmdSpan);
 
   textField.appendChild(prevCmdContainer);
+  window.scrollTo(0, document.body.scrollHeight);
 }
 
 function changeUserName(cmd) {
@@ -159,6 +162,7 @@ function changeUserName(cmd) {
   clearTextField();
   document.getElementById('prompt-text').innerText = userName + '@localhost:3000>'
   localStorage.setItem('userName', userName);
+  window.scrollTo(0, document.body.scrollHeight);
 }
 
 (function () {
