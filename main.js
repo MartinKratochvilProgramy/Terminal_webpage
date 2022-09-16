@@ -8,8 +8,8 @@ const adress = '@localhost:3000> ';
 const help = [
   '\'help\'              You know what this does',
   '\'who\'               Who am I?',
-  '\'train\'             Show me the train',
   '\'projects\'          Show projects ',
+  '\'train\'             Show me the train',
   '\'clear\'             Clear command prompt',
   '\'name user-name\'    Change user name',
 ];
@@ -44,11 +44,11 @@ function command(cmd) {
     displayItem(help, cmd);
   } else if (cmd === 'who'){
     displayItem(who, cmd)
-  } else if (cmd === 'train'){
-    displayTrain(train, cmd);
   } else if (cmd === 'projects'){
     displayPrevCmd(cmd);
     textField.innerHTML += projects;
+  } else if (cmd === 'train'){
+    displayTrain(train, cmd);
   } else if (cmd.replace(/ .*/,'') === 'name') {
     if (cmd.split(' ').length != 2) {
       displayInvalidInput(cmd);
