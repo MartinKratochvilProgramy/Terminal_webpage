@@ -50,7 +50,7 @@ function command(cmd) {
     }
     changeUserName(cmd);
   } else {
-    // resolve one-letter commands
+    // resolve one-word commands
     switch (cmd) {
       case 'help':
         displayItem(help, cmd);
