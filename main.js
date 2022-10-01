@@ -39,18 +39,18 @@ var inputHandler = function (event) {
 
 function command(cmd) {
   // get input value (cmd) and write into textfield
-  // base on cmd its value
+  // based on value of cmd
   cmd = cmd.replace(/(\r\n|\n|\r)/gm, "");
 
   if (cmd.replace(/ .*/,'') === 'name') {
-    // if first word is name, check and change name
+    // if cmd first word === 'name', check and change name
     if (cmd.split(' ').length != 2) {
       displayInvalidInput(cmd);
       return;
     }
     changeUserName(cmd);
   } else {
-    // resolve on-letter commands
+    // resolve one-letter commands
     switch (cmd) {
       case 'help':
         displayItem(help, cmd);
