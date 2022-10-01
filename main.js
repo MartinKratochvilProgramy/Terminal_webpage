@@ -38,30 +38,43 @@ var inputHandler = function (event) {
 }
 
 function command(cmd) {
+  // get input value (cmd) and write into textfield
+  // base on cmd its value
   cmd = cmd.replace(/(\r\n|\n|\r)/gm, "");
-  
 
-  if (cmd === 'help') {
-    displayItem(help, cmd);
-  } else if (cmd === 'who'){
-    displayItem(who, cmd)
-  } else if (cmd === 'projects'){
-    displayPrevCmd(cmd);
-    textField.innerHTML += projects;
-  } else if (cmd === 'train'){
-    displayTrain(train, cmd);
-  } else if (cmd.replace(/ .*/,'') === 'name') {
+  if (cmd.replace(/ .*/,'') === 'name') {
+    // if first word is name, check and change name
     if (cmd.split(' ').length != 2) {
       displayInvalidInput(cmd);
       return;
     }
     changeUserName(cmd);
-  } else if (cmd === 'clear') {
-    clearTextField();
-  } else if (cmd === ''){
-    displayItem('', cmd)
   } else {
-    displayInvalidInput(cmd);
+    // resolve on-letter commands
+    switch (cmd) {
+      case 'help':
+        displayItem(help, cmd);
+        break;
+      case 'who':
+        displayItem(who, cmd)
+        break;
+      case 'projects':
+        displayPrevCmd(cmd);
+        textField.innerHTML += projects;
+        break;
+      case 'train':
+        displayTrain(train, cmd);
+        break;
+      case 'clear':
+        clearTextField();
+        break;
+      case '':
+        displayItem('', cmd)
+        break;
+      default:
+        displayInvalidInput(cmd);
+        break;
+    }
   }
   input.value = '';
 }
