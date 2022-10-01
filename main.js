@@ -39,6 +39,7 @@ var inputHandler = function (event) {
 
 function command(cmd) {
   cmd = cmd.replace(/(\r\n|\n|\r)/gm, "");
+  
 
   if (cmd === 'help') {
     displayItem(help, cmd);
