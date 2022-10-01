@@ -138,7 +138,6 @@ function clearTextField() {
 
 function displayInvalidInput(cmd){
   // display error in command line if input not in available inputs
-  console.log(cmd);
   const prevCmdContainer = document.createElement('div');
   prevCmdContainer.classList = 'cmd-text-container';
 
@@ -154,6 +153,8 @@ function displayInvalidInput(cmd){
 
   textField.appendChild(prevCmdContainer);
   window.scrollTo(0, document.body.scrollHeight);
+
+  input.value = '';
 }
 
 function changeUserName(cmd) {
