@@ -59,8 +59,7 @@ function command(cmd) {
         displayItem(who, cmd)
         break;
       case 'projects':
-        displayPrevCmd(cmd);
-        textField.innerHTML += projects;
+        displayProjects(cmd);
         break;
       case 'train':
         displayTrain(train, cmd);
@@ -115,6 +114,11 @@ async function displayItem(item, cmd){
     window.scrollTo(0, document.body.scrollHeight);
     await sleep(25);
   }
+}
+
+function displayProjects(cmd) {
+  displayPrevCmd(cmd);
+  textField.innerHTML += projects;
 }
 
 async function displayTrain(item, cmd) {
