@@ -1,5 +1,7 @@
 # Terminal webpage
 
+Link: https://martinkratochvilprogramy.github.io/terminal-web/
+
 Webpage works as a simple terminal. Type 'help' to list available commands.
 
 ![image](https://user-images.githubusercontent.com/94861828/188401161-1211756b-0c64-4773-b87f-98d1afa89045.png)
